@@ -16,6 +16,13 @@
     <%= form.text_field :title %>
   </div>
 
+  <%= form.fields_for :choices do |choice| %>
+    <div class="field">
+      <%= choice.label :name %>
+      <%= choice.text_field :name %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

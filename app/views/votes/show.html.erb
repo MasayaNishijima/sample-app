@@ -4,6 +4,15 @@
   <strong>Title:</strong>
   <%= @vote.title %>
 </p>
+<div>
+  <% @vote.choices.each do |choice| %>
+    <p><%= choice.name %><%= choice.count %></p>
+    <%# <button type="submmit">投票！</button> %>
+    <%= form_with(url: count_up_choice_path(choice), method: :patch) do |form| %>
+      <%= form.submit "投票" %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_vote_path(@vote) %> |
 <%= link_to 'Back', votes_path %>
