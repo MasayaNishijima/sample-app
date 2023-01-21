@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_011125) do
 
   create_table "choices", force: :cascade do |t|
     t.string "name"
-    t.integer "count"
+    t.integer "count", default: 0
     t.integer "vote_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
