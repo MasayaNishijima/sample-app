@@ -13,6 +13,10 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    # buildでデータベースに登録せずにフォームの作成
+    Vote::DEFAULT_CHOICES.times.each { @vote.choices.build }
+    # @vote.choices.build
+    # @vote.choices.build
   end
 
   # GET /votes/1/edit
@@ -65,6 +69,9 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.require(:vote).permit(:name)
+      params.require(:vote).permit(
+        :title,
+        choices_attributes: [:id, :name]
+      )
     end
 end
