@@ -71,7 +71,7 @@ class VotesController < ApplicationController
     def vote_params
       params.require(:vote).permit(
         :title,
-        choices_attributes: [:id, :name, :_destroy]
+        choices_attributes: [:id, :name]
       )
     end
 end
