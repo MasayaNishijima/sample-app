@@ -22,5 +22,7 @@ module SampleApp
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    Faker::Config.locale = :ja
   end
 end
