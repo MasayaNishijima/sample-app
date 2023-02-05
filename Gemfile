@@ -52,6 +52,7 @@ group :test do
   group :test do
     gem 'capybara', '>= 2.15'
     gem 'rspec-rails'
+    gem 'webdrivers'
   end
 end
 
