@@ -15,8 +15,6 @@ class VotesController < ApplicationController
     @vote = Vote.new
     # buildでデータベースに登録せずにフォームの作成
     Vote::DEFAULT_CHOICES.times.each { @vote.choices.build }
-    # @vote.choices.build
-    # @vote.choices.build
   end
 
   # GET /votes/1/edit
