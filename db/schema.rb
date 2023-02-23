@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_023720) do
+ActiveRecord::Schema.define(version: 2023_02_23_060141) do
 
   create_table "choices", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 2023_01_21_023720) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["vote_id"], name: "index_choices_on_vote_id"
+  end
+
+  create_table "user_votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "vote_id", null: false
+    t.integer "choice_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["choice_id"], name: "index_user_votes_on_choice_id"
+    t.index ["user_id", "vote_id"], name: "index_user_votes_on_user_id_and_vote_id", unique: true
+    t.index ["user_id"], name: "index_user_votes_on_user_id"
+    t.index ["vote_id"], name: "index_user_votes_on_vote_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +52,7 @@ ActiveRecord::Schema.define(version: 2023_01_21_023720) do
   end
 
   add_foreign_key "choices", "votes"
+  add_foreign_key "user_votes", "choices"
+  add_foreign_key "user_votes", "users"
+  add_foreign_key "user_votes", "votes"
 end
