@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Votes", type: :system do
+RSpec.describe 'Votes', type: :system do
   scenario '投票の作成から投票の実行まで' do
     visit votes_path
     click_on 'New Vote'
