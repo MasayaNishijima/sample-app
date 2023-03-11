@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Choices", type: :request do
-  describe "PATCH /choice/{id}" do
+RSpec.describe 'Choices', type: :request do
+  describe 'PATCH /choice/{id}' do
     let(:vote) { FactoryBot.create(:vote) }
 
-    it "投票数が1増えること" do
+    it '投票数が1増えること' do
       expect(vote.choices[0].count).to eq 0
 
       patch count_up_choice_path(vote.choices[0].id)
